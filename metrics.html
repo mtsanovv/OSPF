@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>OSPF | Метрики при OSPF</title>
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="nav-title">O S P F</li>
+                    <li><a href="index.html">Начало</a></li>
+                    <li><a href="about.html">За сайта</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="content">
+            <h1>Метрики при OSPF</h1>
+            <hr width="80%" size="1px" color="#fff" style="opacity: 0.2">
+            <div class="text-box">
+                <p>
+                    За да се подпомогне намирането на най-добрия път, в OSPF се използва т.нар. цена на връзката (cost). Тя се обраува като референтна стойност се раздели на скоростта на връзката в битове в секунда. Например, при Cisco устройствата референтната стойност (reference bandwidth) e <span class="console-text">100 000 000</span>. От това следва, че цената на една обикновена 10 Mbps Ethernet връзка би била
+                    <span class="console-text">100 000 000 / 10 000 000 = 10</span>. Съответно, цената на една бърза Ethernet връзка от 100 Mbps би била 1.
+                </p>
+                Има едно изискване: цената трябва да е цяло число. Така при същата референтна стойност от <span class="console-text">100 000 000</span> една Ethernet връзка със скорост 1 Gbps би имала отново цена 1. Затова при по-бързи връзки референтната стойност би следвало да се адаптира, като при повечето устройства е в мерна единица мегабита в секунда. Така например при Cisco ако се въведе стойност за auto-cost reference bandwidth <span class="console-text">1000</span>, референтната стойност ще бъде <span class="console-text">100 000 000 000</span>.
+                <p>
+                    В следната таблица може да се види цената на различните видове връзки при референтна стойност 10<sup>8</sup> bps:
+                </p>
+                <table>
+                    <tr>
+                        <th>Скорост на връзката</th>
+                        <th>10<sup>8</sup>/bps = цена</th>
+                    </tr>
+                    <tr>
+                        <td>Fast Ethernet и по-бързи (100+ Mbps)</td>
+                        <td class="console-text">10<sup>8</sup>/100 000 000 bps = 1</td>
+                    </tr>
+                    <tr>
+                        <td>Ethernet (10 Mbps)</td>
+                        <td class="console-text">10<sup>8</sup>/10 000 000 bps = 10</td>
+                    </tr>
+                    <tr>
+                        <td>E1 (2048 Kbps)</td>
+                        <td class="console-text">10<sup>8</sup>/2 048 000 bps = 48</td>
+                    </tr>
+                    <tr>
+                        <td>T1 (1544 Kbps)</td>
+                        <td class="console-text">10<sup>8</sup>/1 544 000 bps = 64</td>
+                    </tr>
+                    <tr>
+                        <td>128 Kbps</td>
+                        <td class="console-text">10<sup>8</sup>/128 000 bps = 781</td>
+                    </tr>
+                    <tr>
+                        <td>64 Kbps</td>
+                        <td class="console-text">10<sup>8</sup>/64 000 bps = 1562</td>
+                    </tr>
+                    <tr>
+                        <td>56 Kbps</td>
+                        <td class="console-text">10<sup>8</sup>/56 000 bps = 1785</td>
+                    </tr>
+                </table>
+                <a href="characteristics.html"><button style="width: 100%">Назад</button></a>
+            </div>
+        </div>
+    </body>
+</html>
